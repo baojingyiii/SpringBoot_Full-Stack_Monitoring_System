@@ -195,6 +195,7 @@ java -jar target/oshi-app-1.0.0.jar
 
 ### 📊 监控效果
 访问`http://localhost:8080/metrics/cpuload`，获取到自己电脑的cpu使用率
+
 ![metrics](./docs/images/metrics.png)
 
 ### 🎯前端
@@ -208,12 +209,15 @@ echarts:画图  <br>
 
 ### 🔍 CPU 监控视图
 访问`http://localhost:5173/`
+
 ![首页](./docs/images/首页.png)
 
 点击上方菜单栏中'CPU监控'，跳转`http://localhost:5173/CPU`
+
 ![cpuload-10](./docs/images/cpuload-10.png)
 
 右上角可选择监控的范围，例如点击30min,则显示30个数据
+
 ![cpuload-30](./docs/images/cpuload-30.png)
 
 ### 🔄 后续开发计划
