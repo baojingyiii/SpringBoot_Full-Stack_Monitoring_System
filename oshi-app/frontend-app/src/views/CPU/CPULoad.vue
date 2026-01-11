@@ -13,7 +13,6 @@ const initChart = () => {  //初始化图表
   }
 }
 
-//等待页面加载出来,所以需要用到onMounted,有div dom元素才可以执行div
 onMounted(() => {
   // drawCpuLoad();
   initChart();
@@ -24,11 +23,9 @@ onMounted(() => {
 
 const cpuAllData = ref([])  //16核cpu的所有数据，每一核是一个数组，数组中保存的是每秒的数据
 
-//下拉列表选择监控显示的时间范围：结合dropdown-button.vue
-const selectedTimeRange = ref(30); // 默认30秒，单位：秒
+const selectedTimeRange = ref(30); // 默认30秒
 function time(newTime) {
   selectedTimeRange.value = newTime;
-  // console.log("接收时间点",newTime);  //测试
 }
 
 watch(selectedTimeRange, (newRange) => {
@@ -47,26 +44,12 @@ const getCpuData = async () => {
   //2.返回16核cpu，每个核当前的负载值
   let data = resp.data;
   for (let i = 0; i < 16; i++) {
-    //i:哪个cpu, cpuData:cpu的数据(也就是data=resp.data)
-    // drawCpuLoad(i, cpuData);
-    // drawCpuLoad(i,data[i]);  //但是data[i]只是其中的一个数值。实际上需要获取第i核cpu，每一秒的数值（也就是一个数组）。
-    if (!cpuAllData.value[i]) {  // 如果这个CPU的数组不存在
-      cpuAllData.value[i] = [];   // 就创建一个空数组
+    if (!cpuAllData.value[i]) {
+      cpuAllData.value[i] = [];
     }    //（相当于初始化）
-
-    // //设置数组最多存放30个数据
-    // if(cpuAllData.value[i].length > 30) {
-    //   let arr = cpuAllData.value[i].slice(-30);  //slice：切片。获取从数组末尾开始的30个元素。
-    //   arr.push(data[i]);  //把data[i]放到arr的末尾
-    //   cpuAllData.value[i] = arr;  //赋值，arr这个数组给cpuAllData.value[i]
-    // }else{
-    //   cpuAllData.value[i].push(data[i]);  //把请求到的第i核cpu的使用率放进自己的数组中
-    // }
-
-    //根据选择的时间范围，更改存放的点数
     const selectedTime = selectedTimeRange.value;
     // 先添加新数据
-    cpuAllData.value[i].push(data[i]);  //把请求到的第i核cpu的使用率放进自己的数组中
+    cpuAllData.value[i].push(data[i]);
     // 再检查并保持长度
     if (cpuAllData.value[i].length > selectedTime) {
       cpuAllData.value[i].shift();  // 删除第一个元素
@@ -82,10 +65,8 @@ const getCpuData = async () => {
 
 }
 
-// const drawCpuLoad = (cpuIndex,cpuData) => {  //箭头函数对应前面的：drawCpuLoad(i+1,cpuAllData.value[i]);
+
 const drawCpuLoad = (cpuIndex, cpuData) => {
-  // var chartDom = document.getElementById('chart-' + cpuIndex);
-  // var myChart = echarts.init(chartDom);
   var myChart = chartDom[cpuIndex - 1];
   var option;
 

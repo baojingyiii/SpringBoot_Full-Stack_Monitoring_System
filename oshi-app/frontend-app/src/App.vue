@@ -33,7 +33,7 @@ html, body, #app {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  color: var(--color-black);
+  color: black;
   font-size: 16px;
   font-stretch: condensed;
   text-align: center;
@@ -48,7 +48,7 @@ html, body, #app {
 
 .layout-demo :deep(.arco-layout-sider) {
   width: 206px;
-  background-color: var(--color-primary-light-3);
+  //background-color: var(--color-primary-light-3);
 }
 
 .layout-demo :deep(.arco-layout-content) {
