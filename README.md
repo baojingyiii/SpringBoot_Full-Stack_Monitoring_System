@@ -5,16 +5,6 @@
 本项目是一个基于 SpringBoot 的全栈监控系统，用于实时监控和分析 CPU 性能指标。通过 OSHI 库采集系统硬件信息，结合 Vue3 和 ECharts 实现可视化展示。
 
 ## 🛠️ 技术栈
-技术	版本	说明
-Java	17	后端运行环境
-Spring Boot	4.0.1	Web 应用框架
-OSHI-core	6.6.5	系统硬件信息采集
-Vue 3	Latest	前端框架
-ECharts	Latest	数据可视化图表
-Axios	Latest	HTTP 客户端
-Arco Design Vue	Latest	UI 组件库
-
-## 🛠️ 技术栈
 
 | 技术 | 版本 | 说明 |
 |------|------|------|
